@@ -1,0 +1,30 @@
+{
+  "name": "webpack-template",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "deploy": "./deploy.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shamblonaut/webpack-template.git"
+  },
+  "author": "Shamblonaut",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shamblonaut/webpack-template/issues"
+  },
+  "homepage": "https://github.com/shamblonaut/webpack-template#readme",
+  "devDependencies": {
+    "css-loader": "^6.10.0",
+    "html-loader": "^5.0.0",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
