@@ -5,6 +5,10 @@ build_command() {
   npx webpack
 }
 
+echo -e "\033[0;32mDeleting old content...\033[0m"
+rm -rf $directory
+git worktree prune
+
 echo -e "\033[0;32mDeleting existing $branch...\033[0m"
 git push origin --delete $branch
 git branch -D $branch
@@ -14,9 +18,6 @@ git checkout --orphan $branch
 git reset --hard
 git commit --allow-empty -m "Initial commit"
 git checkout main
-
-echo -e "\033[0;32mDeleting old content...\033[0m"
-rm -rf $directory
 
 echo -e "\033[0;32mChecking out $branch....\033[0m"
 git worktree add $directory $branch
@@ -30,5 +31,3 @@ cd $directory &&
   git commit -m "Deploy updates" &&
   git push origin $branch
 
-echo -e "\033[0;32mCleaning up...\033[0m"
-git worktree remove $directory
