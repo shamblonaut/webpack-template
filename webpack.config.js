@@ -30,10 +30,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./src/html/index.html",
             filename: "index.html",
-            inject: "body",
         }),
     ],
 
     mode: "development",
     devtool: "inline-source-map",
+    devServer: {
+        static: "./dist",
+    }
 };
