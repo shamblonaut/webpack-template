@@ -11,5 +11,13 @@ export default [
     env: {
       browser: true,
     },
+    overrides: [
+      {
+        files: ["tests/**/*"],
+        env: {
+          jest: true,
+        },
+      },
+    ],
   },
 ];
