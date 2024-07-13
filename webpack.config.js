@@ -1,16 +1,18 @@
-const path = require("path");
+import path from "path";
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-module.exports = {
+const __dirname = import.meta.dirname;
+
+export default {
   entry: "./src/index.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
-  
+
   module: {
     rules: [
       {
@@ -27,15 +29,13 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: [
-              ["@babel/preset-env", { targets: "defaults" }],
-            ],
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
           },
         },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ],
   },
@@ -51,5 +51,5 @@ module.exports = {
   devtool: "inline-source-map",
   devServer: {
     static: "./dist",
-  }
+  },
 };
