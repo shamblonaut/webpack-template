@@ -17,7 +17,7 @@ export default {
     rules: [
       {
         test: /\.(html)$/i,
-        use: ["html-loader"],
+        loader: "html-loader",
       },
       {
         test: /\.css$/i,
@@ -49,7 +49,7 @@ export default {
   ],
 
   mode: "development",
-  devtool: "inline-source-map",
+  devtool: "eval-source-map",
   devServer: {
     static: "./dist",
   },
