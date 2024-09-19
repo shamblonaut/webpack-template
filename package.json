@@ -6,9 +6,8 @@
   "private": "true",
   "scripts": {
     "test": "jest",
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "serve": "webpack --watch & webpack-dev-server --progress --color",
+    "build": "webpack --config webpack.prod.js",
+    "serve": "webpack serve --open --config webpack.dev.js",
     "deploy": "webpack && git subtree push --prefix dist origin gh-pages"
   },
   "repository": {
@@ -37,7 +36,8 @@
     "mini-css-extract-plugin": "^2.8.1",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-server": "^5.0.4",
+    "webpack-merge": "^6.0.1"
   },
   "browserslist": [
     ">0.25%"

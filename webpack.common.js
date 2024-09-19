@@ -6,15 +6,30 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 const __dirname = import.meta.dirname;
 
 export default {
-  entry: "./src/index.js",
+  entry: {
+    app: "./src/index.js",
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
 
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      favicon: "./assets/favicon.ico",
+      template: "./src/html/index.html",
+      filename: "index.html",
+    }),
+  ],
+
   module: {
     rules: [
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
+        type: "asset/resource",
+      },
       {
         test: /\.(html)$/i,
         loader: "html-loader",
@@ -33,24 +48,6 @@ export default {
           },
         },
       },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
-        type: "asset/resource",
-      },
     ],
-  },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      favicon: "./assets/favicon.ico",
-      template: "./src/html/index.html",
-      filename: "index.html",
-    }),
-  ],
-
-  mode: "development",
-  devtool: "eval-source-map",
-  devServer: {
-    static: "./dist",
   },
 };
